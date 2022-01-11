@@ -1,7 +1,8 @@
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
 import Listing from './pages/Listing';
 import Form from './pages/Form';
@@ -17,7 +18,9 @@ function App() {
         <Route path="/form">
           <Route path=":movieId" element={<Form />} />
         </Route>
-        <Route path="*" element={<NotFound />}/>
+        <Route path="/404" element={<NotFound />}/>
+        <Route path='*' element={<Navigate to="/404" />} />
+        Navigate
       </Routes>
     </BrowserRouter>
   );
