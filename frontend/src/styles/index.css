@@ -2,6 +2,8 @@
 
 :root {
   --color-primary: #4d41c0;
+  --color-white: #fff;
+  --color-body: #e5e5e5;
 }
 
 * {
@@ -11,7 +13,7 @@
 
 html,
 body {
-  background-color: #e5e5e5;
+  background-color: var(--color-body);
 }
 
 a,
