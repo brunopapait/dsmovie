@@ -14,7 +14,8 @@
 	<name>dsmovie</name>
 	<description>Projeto criado na semana Spring React</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -61,6 +62,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
 			</plugin>
 		</plugins>
 	</build>
