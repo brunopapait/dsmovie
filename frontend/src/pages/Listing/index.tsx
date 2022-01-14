@@ -13,8 +13,6 @@ export default function Listing() {
 
   async function load() {
       const {data:MoviePage} = await api.get('/movies?size=12');
-
-      debugger
     }
 
   return (
