@@ -1,7 +1,22 @@
+import { useEffect } from "react";
 import MovieCard from "../MovieCard";
 import Pagination from "../Pagination";
 
+import {MoviePage} from '../../types/movie';
+import api from "../../service/api";
+import { loadavg } from "os";
+
 export default function Listing() {
+  useEffect(() => {
+    load();
+  }, []);
+
+  async function load() {
+      const {data:MoviePage} = await api.get('/movies?size=12');
+
+      debugger
+    }
+
   return (
     <>
       <Pagination />
