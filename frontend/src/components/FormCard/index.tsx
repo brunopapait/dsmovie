@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../../service/api";
 import { Movie } from "../../types/movie";
+import { validateEmail } from "../../utils/validateEmail";
 import "./styles.css";
 
 type Props = {
@@ -9,6 +10,7 @@ type Props = {
 };
 
 export default function FormCard({ movieId }: Props) {
+  const navigate = useNavigate();
   const [movie, setMovie] = useState<Movie>();
 
   useEffect(() => {
@@ -16,6 +18,20 @@ export default function FormCard({ movieId }: Props) {
       setMovie(response.data);
     });
   }, [movieId]);
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const email = (e.target as any).email.value;
+    const score = (e.target as any).score.value;
+
+    if (!validateEmail(email)) {
+      return;
+    }
+
+    api.put(`/scores`, { movieId, email, score }).then((response) => {
+      navigate("/");
+    });
+  }
 
   return (
     <div className="dsmovie-form-container">
@@ -26,10 +42,10 @@ export default function FormCard({ movieId }: Props) {
       />
       <div className="dsmovie-card-bottom-container">
         <h3>{movie?.title}</h3>
-        <form className="dsmovie-form">
+        <form className="dsmovie-form" onSubmit={handleSubmit}>
           <div className="form-group dsmovie-form-group">
             <label htmlFor="email">Informe seu email</label>
-            <input type="email" className="form-control" id="email" />
+            <input type="email" className="form-control" id="email" required />
           </div>
           <div className="form-group dsmovie-form-group">
             <label htmlFor="score">Informe sua avaliação</label>
