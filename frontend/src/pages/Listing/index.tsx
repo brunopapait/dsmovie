@@ -17,8 +17,8 @@ const INITIAL_VALUES_PAGE: MoviePage = {
 };
 
 export default function Listing() {
-  const [pageNumber, setPageNumber] = useState(0);
-  const [page, setPage] = useState(INITIAL_VALUES_PAGE);
+  const [pageNumber, setPageNumber] = useState<number>(0);
+  const [page, setPage] = useState<MoviePage>(INITIAL_VALUES_PAGE);
 
   useEffect(() => {
     api.get(`/movies?size=12&page=${pageNumber}`).then((response) => {
@@ -27,9 +27,13 @@ export default function Listing() {
     });
   }, [pageNumber]);
 
+  function handlePage(newPage: number) {
+    setPageNumber(newPage);
+  }
+
   return (
     <>
-      <Pagination />
+      <Pagination page={page} handlePage={handlePage} />
       <div className="container">
         <div className="row">
           {page.content.map((movie, index) => (
