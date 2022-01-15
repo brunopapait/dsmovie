@@ -21,7 +21,7 @@ export default function Listing() {
   const [page, setPage] = useState<MoviePage>(INITIAL_VALUES_PAGE);
 
   useEffect(() => {
-    api.get(`/movies?size=12&page=${pageNumber}`).then((response) => {
+    api.get(`/movies?size=12&page=${pageNumber}&sort=id`).then((response) => {
       const data = response.data as MoviePage;
       setPage(data);
     });
