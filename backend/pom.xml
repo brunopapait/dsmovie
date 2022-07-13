@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.papait.bruno</groupId>
 	<artifactId>dsmovie</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>dsmovie</name>
 	<description>Projeto criado na semana Spring React</description>
 	<properties>
